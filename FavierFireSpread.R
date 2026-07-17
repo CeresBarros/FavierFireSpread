@@ -357,7 +357,7 @@ doFireSpread <- function(sim) {
     startPix <- mask(sim$fireIgnitionProb, burnableAreas)
     startPix[is.na(startPix[])] <- 0   ## to prevent NA warnings in rbinom
     startPix <- rbinom(n = ncell(startPix), size = 1, prob = pmin(startPix[], 1))
-    startPix <- which(startPix > 0) ## winners are 0 or larger.
+    startPix <- which(startPix > 0) ## winners are larger than 0s.
     sim$startPix <- sample(startPix)  ## randomize order so that first fires aren't always at top of landscape
   }
 
